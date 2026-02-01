@@ -215,13 +215,6 @@ This project welcomes contributions and feedback:
 
 This extension is released under the MIT License. See the LICENSE file for full details.
 
-## Related Reading
-
-- [United Nations General Assembly Resolution 50/80](https://undocs.org/en/A/RES/50/80) - Recognition of Baltic states' sovereignty
-- [International Court of Justice cases on Baltic states](https://www.icj-cij.org/)
-- [Wikipedia Manual of Style](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style) - General Wikipedia style guidelines
-- Legal Continuity in International Law - Academic resources on the continuity doctrine
-
 ## Disclaimer
 
 This extension is provided as-is for informational purposes. While it aims to reflect internationally recognized legal principles regarding national sovereignty, users should be aware that the interpretation of birthplace designations is subject to ongoing debate. This extension does not claim to represent the definitive Wikipedia position on these matters, but rather provides a tool for users who prefer modern country name designations.
