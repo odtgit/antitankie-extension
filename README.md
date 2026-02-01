@@ -136,18 +136,21 @@ The extension is ready to be loaded unpacked in developer mode or packaged for s
 
 ```
 antitankie-extension/
-├── manifest.json                 # Chrome/Chromium manifest
-├── manifest.firefox.json         # Firefox-specific manifest
+├── manifest.json                 # Chrome/Chromium manifest (Manifest V3)
+├── manifest.firefox.json         # Firefox-specific manifest (Manifest V2)
+├── config.js                     # Country mappings configuration (easy to extend)
+├── replacements.js               # Replacement engine using config.js
 ├── content.js                    # Content script (runs on Wikipedia pages)
 ├── background.js                 # Background/service worker script
-├── replacements.js               # Core replacement logic and SSR mappings
 ├── popup.html                    # Extension popup UI
 ├── popup.js                      # Popup functionality and user preferences
 ├── popup.css                     # Popup styling
+├── build.sh                      # Build script for packaging
 ├── icons/
 │   ├── icon16.png               # 16x16 extension icon
 │   ├── icon48.png               # 48x48 extension icon
 │   └── icon128.png              # 128x128 extension icon
+├── LICENSE                       # Mozilla Public License 2.0
 └── README.md                     # This file
 ```
 
@@ -213,7 +216,17 @@ This project welcomes contributions and feedback:
 
 ## License
 
-This extension is released under the MIT License. See the LICENSE file for full details.
+This extension is released under the **Mozilla Public License 2.0 (MPL-2.0)**. See the [LICENSE](LICENSE) file for full details.
+
+### Fork Guidelines
+
+If you fork or redistribute this extension, please preserve:
+
+1. **This README.md file** - including the Background section explaining the legal and historical context
+2. **The original project attribution** - credit to the original authors
+3. **The stated purpose** - the extension's goal of reflecting legal continuity doctrine
+
+You are free to modify the code, add features, and adapt it for your needs under MPL 2.0 terms. We simply ask that the historical and legal context that motivated this project remains accessible to users of derivative works.
 
 ## Related Reading
 
@@ -228,6 +241,6 @@ This extension is provided as-is for informational purposes. While it aims to re
 
 ---
 
-**Version**: 1.0.0
-**Last Updated**: 2025-02-01
-**Browser Support**: Chrome, Chromium, Brave, Edge, Firefox (and other Chromium-based browsers)
+**Version**: 0.0.5
+**Last Updated**: 2026-02-01
+**Browser Support**: Chrome, Chromium, Brave, Edge, Firefox, Firefox for Android (and other Chromium-based browsers)

@@ -38,6 +38,7 @@ COMMON_FILES=(
     "background.js"
     "config.js"
     "replacements.js"
+    "LICENSE"
 )
 
 # Check for optional content.js
