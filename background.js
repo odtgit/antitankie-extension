@@ -3,6 +3,10 @@
  * Handles state management, message routing, and badge updates
  */
 
+// Cross-browser compatibility: Firefox uses browser.browserAction, Chrome uses chrome.action
+const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
+const badgeAPI = browserAPI.action || browserAPI.browserAction;
+
 // Initialize extension state on install
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.get('enabled', (result) => {
@@ -60,10 +64,11 @@ function formatBadgeText(count) {
  */
 function updateBadge(count) {
   const badgeText = formatBadgeText(count);
-  chrome.action.setBadgeText({ text: badgeText });
 
-  // Set badge color
-  chrome.action.setBadgeBackgroundColor({ color: '#4CAF50' });
+  if (badgeAPI && badgeAPI.setBadgeText) {
+    badgeAPI.setBadgeText({ text: badgeText });
+    badgeAPI.setBadgeBackgroundColor({ color: '#4CAF50' });
+  }
 }
 
 // Listen for storage changes to update badge
