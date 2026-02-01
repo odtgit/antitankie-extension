@@ -15,9 +15,9 @@ When you encounter text like "Born in Tallinn, Estonian SSR, Soviet Union," the 
 For over 18 years, Wikipedia has been at the center of a contentious debate regarding how to refer to the Baltic states and other former Soviet republics during the Soviet period. This issue encompasses far more than just formatting preferences—it touches on fundamental questions of national sovereignty, legal continuity, and historical accuracy.
 
 **Key Resources:**
-- [Wikipedia Talk:Manual of Style/Baltic states-related articles discussion](https://en.wikipedia.org/wiki/Wikipedia_talk:Manual_of_Style/Dates_and_numbers) - The ongoing RFC (Request for Comments) that has struggled to reach consensus
-- [ERR News coverage of mass editing campaign](https://news.err.ee/) - Coverage of coordinated efforts to standardize birthplace references
-- [Baltic Sentinel coverage](https://balticsentinel.com/) - Analysis of the naming dispute's political implications
+- [Wikipedia Talk:Manual of Style/Baltic states-related articles discussion](https://en.wikipedia.org/wiki/Wikipedia_talk:Manual_of_Style/Baltic_states-related_articles) - The ongoing RFC (Request for Comments) that has struggled to reach consensus
+- [ERR News coverage of mass editing campaign](https://news.err.ee/1609903256/estonian-volunteers-struggling-to-protect-wikipedia-from-russian-propaganda)- Coverage of coordinated efforts to standardize birthplace references
+- [Baltic Sentinel coverage](https://balticsentinel.eu/8394326/wikipedia-s-baltic-battle-estonian-journalists-warn-of-coordinated-pro-soviet-edits-lithuania-reports-similar-targeting) - Analysis of the naming dispute's political implications
 
 ### Legal Foundations
 
