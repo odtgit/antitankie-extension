@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthplace Corrector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Birthplace Corrector</h1>
+    </header>
+
+    <main>
+      <div class="control-section">
+        <div class="toggle-container">
+          <label for="enabled-toggle" class="toggle-label">Enable Extension</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="enabled-toggle">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <div class="stat-item">
+          <span class="stat-label">Total Replacements:</span>
+          <span class="stat-value" id="replacement-count">0</span>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <p class="description">
+          This extension corrects Wikipedia birthplace references, replacing Soviet-era
+          SSR country names with modern, historically accurate country names.
+        </p>
+        <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Manual_of_Style/Dates_and_numbers#Birth_and_death_places"
+           target="_blank"
+           class="learn-more">
+          Learn more about Wikipedia birthplace standards
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      <p class="version">v1.0.0</p>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

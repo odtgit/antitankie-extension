@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Wikipedia Birthplace Corrector",
+  "description": "Restores modern country names for birthplaces on Wikipedia, correcting Soviet-era SSR designations to reflect the legal continuity doctrine recognized by affected nations.",
+  "version": "0.0.2",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*.wikipedia.org/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.wikipedia.org/*"
+      ],
+      "js": [
+        "config.js",
+        "replacements.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
