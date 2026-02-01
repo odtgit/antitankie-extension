@@ -37,7 +37,7 @@ enabledToggle.addEventListener('change', async (event) => {
     for (const tab of tabs) {
       try {
         await chrome.tabs.sendMessage(tab.id, {
-          type: 'toggleExtension',
+          type: 'toggleState',
           enabled: isEnabled
         });
       } catch (error) {

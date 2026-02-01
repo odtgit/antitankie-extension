@@ -20,16 +20,17 @@ chrome.runtime.onInstalled.addListener(() => {
 
 // Handle messages from content scripts
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'incrementCount') {
+  if (request.type === 'incrementCount') {
     chrome.storage.local.get('replacementCount', (result) => {
-      const newCount = (result.replacementCount || 0) + 1;
+      const newCount = (result.replacementCount || 0) + (request.count || 1);
       chrome.storage.local.set({ replacementCount: newCount });
       updateBadge(newCount);
     });
-  } else if (request.action === 'getState') {
+  } else if (request.type === 'getState') {
     chrome.storage.sync.get('enabled', (result) => {
       sendResponse({ enabled: result.enabled !== false });
     });
+    return true; // Keep channel open for async response
   }
 });
 
