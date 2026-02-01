@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Wikipedia Birthplace Corrector",
   "description": "Restores modern country names for birthplaces on Wikipedia, correcting Soviet-era SSR designations to reflect the legal continuity doctrine recognized by affected nations.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "permissions": [
     "storage",
     "activeTab"
