@@ -114,6 +114,33 @@ The extension replaces designations for all 15 former Soviet republics:
 
 **Note**: For temporary loading in Firefox, the extension will remain until you restart the browser. For permanent installation, you would need to package it as an .xpi file and add it through the official Firefox Add-ons website (requires review).
 
+## Verifying It Works
+
+To confirm the extension is working correctly:
+
+1. **Install the extension** using the instructions above
+2. **Visit a Wikipedia article** for someone born in a former Soviet republic during the Soviet era, such as:
+   - [Kaja Kallas](https://en.wikipedia.org/wiki/Kaja_Kallas) (born in Tallinn, Estonian SSR)
+   - [Tõnis Mägi](https://en.wikipedia.org/wiki/T%C3%B5nis_M%C3%A4gi) (born in Tartu, Estonian SSR)
+   - [Volodymyr Zelenskyy](https://en.wikipedia.org/wiki/Volodymyr_Zelenskyy) (born in Kryvyi Rih, Ukrainian SSR)
+3. **Look at the infobox** on the right side of the article
+
+You should see:
+- A **green left border** on the birthplace row indicating a correction was made
+- A **green checkmark (✓)** after the country name
+- The **modern country name** (e.g., "Estonia" instead of "Estonian SSR, Soviet Union")
+- **Reference brackets removed** (no more `[a]` or `[1]` after the location)
+
+### Before and After
+
+| Before (without extension) | After (with extension) |
+|---------------------------|------------------------|
+| Tallinn, Estonian SSR, Soviet Union | Tallinn, Estonia ✓ |
+
+![Screenshot of corrected infobox](docs/screenshot_infobox.png)
+
+*The infobox shows the birthplace corrected from "Estonian SSR, Soviet Union" to "Estonia" with a visual indicator.*
+
 ## Building for Distribution
 
 To prepare the extension for distribution:
