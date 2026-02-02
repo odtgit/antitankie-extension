@@ -1,21 +1,62 @@
+// Cross-browser compatibility: Firefox uses browser.*, Chrome uses chrome.*
+const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
+
 // DOM elements
 const enabledToggle = document.getElementById('enabled-toggle');
 const replacementCount = document.getElementById('replacement-count');
+
+// Helper to handle both promise and callback-based storage APIs
+function storageGet(storageArea, keys) {
+  return new Promise((resolve, reject) => {
+    const storage = browserAPI.storage[storageArea];
+    const result = storage.get(keys, (data) => {
+      if (browserAPI.runtime.lastError) {
+        reject(browserAPI.runtime.lastError);
+      } else {
+        resolve(data);
+      }
+    });
+    // If it returns a promise (Firefox), use that instead
+    if (result && typeof result.then === 'function') {
+      result.then(resolve).catch(reject);
+    }
+  });
+}
+
+function storageSet(storageArea, data) {
+  return new Promise((resolve, reject) => {
+    const storage = browserAPI.storage[storageArea];
+    const result = storage.set(data, () => {
+      if (browserAPI.runtime.lastError) {
+        reject(browserAPI.runtime.lastError);
+      } else {
+        resolve();
+      }
+    });
+    // If it returns a promise (Firefox), use that instead
+    if (result && typeof result.then === 'function') {
+      result.then(resolve).catch(reject);
+    }
+  });
+}
 
 // Initialize popup with current state
 async function initializePopup() {
   try {
     // Load enabled state from sync storage
-    const syncData = await chrome.storage.sync.get(['enabled']);
+    const syncData = await storageGet('sync', ['enabled']);
     const isEnabled = syncData.enabled !== false; // Default to true
     enabledToggle.checked = isEnabled;
 
     // Load replacement count from local storage
-    const localData = await chrome.storage.local.get(['replacementCount']);
+    const localData = await storageGet('local', ['replacementCount']);
     const count = localData.replacementCount || 0;
     updateReplacementCount(count);
   } catch (error) {
     console.error('Error initializing popup:', error);
+    // Set defaults on error
+    enabledToggle.checked = true;
+    updateReplacementCount(0);
   }
 }
 
@@ -30,23 +71,19 @@ enabledToggle.addEventListener('change', async (event) => {
 
   try {
     // Save enabled state to sync storage
-    await chrome.storage.sync.set({ enabled: isEnabled });
+    await storageSet('sync', { enabled: isEnabled });
 
     // Send message to all tabs to update their state
-    const tabs = await chrome.tabs.query({});
-    for (const tab of tabs) {
-      try {
-        await chrome.tabs.sendMessage(tab.id, {
+    browserAPI.tabs.query({}, (tabs) => {
+      for (const tab of tabs) {
+        browserAPI.tabs.sendMessage(tab.id, {
           type: 'toggleState',
           enabled: isEnabled
+        }).catch(() => {
+          // Ignore errors for tabs that don't have content script
         });
-      } catch (error) {
-        // Ignore errors for tabs that don't have content script
-        // (e.g., chrome:// pages, extension pages)
       }
-    }
-
-    console.log(`Extension ${isEnabled ? 'enabled' : 'disabled'}`);
+    });
   } catch (error) {
     console.error('Error toggling extension:', error);
     // Revert toggle on error
@@ -55,7 +92,7 @@ enabledToggle.addEventListener('change', async (event) => {
 });
 
 // Listen for storage changes to update count in real-time
-chrome.storage.onChanged.addListener((changes, areaName) => {
+browserAPI.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'local' && changes.replacementCount) {
     const newCount = changes.replacementCount.newValue || 0;
     updateReplacementCount(newCount);

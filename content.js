@@ -255,9 +255,46 @@
       link.remove();
     });
 
+    // Remove reference brackets like [a], [1], [note 1] etc.
+    removeReferenceBrackets(element);
+
     ensureProperFormatting(element);
 
     return { changed, count };
+  }
+
+  /**
+   * Remove reference links/brackets from the element
+   * These are typically <sup> elements with references that no longer make sense
+   */
+  function removeReferenceBrackets(element) {
+    // Find all sup elements containing reference links
+    const sups = element.querySelectorAll('sup.reference, sup.noprint');
+    sups.forEach(sup => {
+      // Clean up any preceding whitespace
+      const prevSibling = sup.previousSibling;
+      if (prevSibling && prevSibling.nodeType === Node.TEXT_NODE) {
+        prevSibling.textContent = prevSibling.textContent.trimEnd();
+      }
+      sup.remove();
+    });
+
+    // Also remove standalone reference links that might not be in <sup>
+    const refLinks = element.querySelectorAll('a[href^="#cite_note"], a[href^="#ref"]');
+    refLinks.forEach(link => {
+      const parent = link.parentNode;
+      // If parent is a <sup>, remove the whole sup
+      if (parent && parent.tagName === 'SUP') {
+        const prevSibling = parent.previousSibling;
+        if (prevSibling && prevSibling.nodeType === Node.TEXT_NODE) {
+          prevSibling.textContent = prevSibling.textContent.trimEnd();
+        }
+        parent.remove();
+      } else {
+        // Just remove the link itself
+        link.remove();
+      }
+    });
   }
 
   /**

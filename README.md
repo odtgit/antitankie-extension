@@ -234,6 +234,6 @@ This extension is provided as-is for informational purposes. While it aims to re
 
 ---
 
-**Version**: 0.0.5
+**Version**: 0.0.6
 **Last Updated**: 2026-02-01
 **Browser Support**: Chrome, Chromium, Brave, Edge, Firefox, Firefox for Android (and other Chromium-based browsers)
