@@ -2,6 +2,22 @@
 
 A browser extension that restores modern country names for birthplaces on Wikipedia, correcting Soviet-era SSR designations to reflect the legal continuity doctrine recognized by affected nations.
 
+## How It Works
+
+![Screenshot of corrected infobox](docs/screenshot_infobox.png)
+
+| Before (without extension) | After (with extension) |
+|---------------------------|------------------------|
+| Tallinn, Estonian SSR, Soviet Union | Tallinn, Estonia ✓ |
+
+1. The extension injects a content script on Wikipedia pages
+2. It scans the page for Soviet-era designations
+3. Replacements are performed in real-time on the visible content
+4. All processing happens locally in your browser—nothing is sent to external servers
+5. Users can toggle the extension on/off from the popup menu
+
+The corrected infobox shows a **green left border** and **green checkmark (✓)** to indicate where corrections were made.
+
 ## Overview
 
 The Wikipedia Birthplace Corrector is a lightweight, privacy-focused browser extension that automatically updates Wikipedia articles to display modern country names instead of outdated Soviet Socialist Republic (SSR) designations. It works seamlessly across all language editions of Wikipedia without modifying the source articles themselves.
@@ -50,14 +66,6 @@ The extension provides automatic, client-side text replacement on Wikipedia page
 - **Soviet Union Suffix Removal**: Removes ", Soviet Union" suffixes that often accompany SSR designations (e.g., "Estonian SSR, Soviet Union" becomes "Estonia")
 - **Non-Invasive**: Does not modify Wikipedia's source data—all changes occur in your browser only
 - **User Control**: Can be easily disabled via the extension popup if you prefer the original text
-
-### How It Works
-
-1. The extension injects a content script on Wikipedia pages
-2. It scans the page for Soviet-era designations
-3. Replacements are performed in real-time on the visible content
-4. All processing happens locally in your browser—nothing is sent to external servers
-5. Users can toggle the extension on/off from the popup menu
 
 ## Countries Covered
 
@@ -123,23 +131,7 @@ To confirm the extension is working correctly:
    - [Kaja Kallas](https://en.wikipedia.org/wiki/Kaja_Kallas) (born in Tallinn, Estonian SSR)
    - [Tõnis Mägi](https://en.wikipedia.org/wiki/T%C3%B5nis_M%C3%A4gi) (born in Tartu, Estonian SSR)
    - [Volodymyr Zelenskyy](https://en.wikipedia.org/wiki/Volodymyr_Zelenskyy) (born in Kryvyi Rih, Ukrainian SSR)
-3. **Look at the infobox** on the right side of the article
-
-You should see:
-- A **green left border** on the birthplace row indicating a correction was made
-- A **green checkmark (✓)** after the country name
-- The **modern country name** (e.g., "Estonia" instead of "Estonian SSR, Soviet Union")
-- **Reference brackets removed** (no more `[a]` or `[1]` after the location)
-
-### Before and After
-
-| Before (without extension) | After (with extension) |
-|---------------------------|------------------------|
-| Tallinn, Estonian SSR, Soviet Union | Tallinn, Estonia ✓ |
-
-![Screenshot of corrected infobox](docs/screenshot_infobox.png)
-
-*The infobox shows the birthplace corrected from "Estonian SSR, Soviet Union" to "Estonia" with a visual indicator.*
+3. **Look at the infobox** on the right side of the article—you should see the green border and checkmark as shown above
 
 ## Building for Distribution
 
